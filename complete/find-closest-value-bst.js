@@ -1,20 +1,23 @@
-  function findClosestValueInBst(tree, target) {
-    return findClosestValueInBstHelper(tree, target, Infinity);
-  }
+const root = [4, 2, 5, 1, 3];
+const target = 3.714286;
 
-  function findClosestValueInBstHelper(tree, target, closest) {
-    if (tree === null) {
-      return closest;
-    } // If we've reached a leaf node, meaning no more values left to search
-    if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
-      closest = tree.value;
-    };
-    if (target < tree.value) {
-      return findClosestValueInBstHelper(tree.left, target, closest); // Go down left side of tree
-    } else if (target > tree.value) {
-      return findClosestValueInBstHelper(tree.right, target, closest); // Go down right side of tree
-    } else {
-      return closest;
-    }
-  }
+function findClosestValueInBst(root, target) {
+  return findClosestValueInBstHelper(root, target, Infinity);
+}
 
+function findClosestValueInBstHelper(root, target, closest) {
+  if (root === null) {
+    return closest;
+  } // If we've reached a leaf node, meaning no more values left to search
+  if (Math.abs(target - closest) > Math.abs(target - root.value)) {
+    closest = root.value;
+  };
+  if (target < root.value) {
+    return findClosestValueInBstHelper(root.left, target, closest); // Go down left side of root
+  } else if (target > root.value) {
+    return findClosestValueInBstHelper(root.right, target, closest); // Go down right side of root
+  } else {
+    console.log('closest');
+    return closest;
+  }
+}
